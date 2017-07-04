@@ -510,6 +510,7 @@ static const char CUDA_PREAMBLE[] =
     "#define GA_DECL_SHARED_PARAM(type, name)\n"
     "#define GA_DECL_SHARED_BODY(type, name) extern __shared__ type name[];\n"
     "#define GA_WARP_SIZE warpSize\n"
+    "#define restrict __restrict__\n"
     "#line 1\n";
 
 /* XXX: add complex, quads, longlong */
