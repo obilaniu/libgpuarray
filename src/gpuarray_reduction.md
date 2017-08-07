@@ -32,7 +32,7 @@ An additional challenge is that the compilation of a GPU kernel takes a non-triv
 
 ### Maximizing Memory Throughput
 
-On AMD and NVIDIA GPU devices, threads are spawned in _blocks_ of up to 1024 threads, but scheduled in **warps** or **wavefronts**. These are groups of 64 or 32 threads with consecutive thread IDs (the `x` axis of a thread block has the fastest-varying thread IDs). Global memory throughput is maximized when scheduled global memory accesses from all active threads in a **warp** can be **coalesced** into a few large _memory transactions_ to contiguous addresses in global memory.
+On AMD and NVIDIA GPU devices, threads are spawned in _3D blocks_ of up to 1024 threads, but scheduled in **warps** or **wavefronts**. These are groups of 64 or 32 threads with consecutive linear thread IDs (A linear thread ID is computed as `lineartid = tid.x + bdim.x*(tid.y + bdim.y*(tid.z))`). Global memory throughput is maximized when scheduled global memory accesses from all active threads in a **warp** can be **coalesced** into a few large _memory transactions_ to contiguous addresses in global memory.
 
 The likelihood of this happening is highest when the axes of a tensor are sorted in order of _ascending stride_, and the elements of the first few axes then distributed to threads with consecutive thread IDs. This minimizes the stride between consecutive threads, maximizing the chances of their memory accesses coalescing.
 
