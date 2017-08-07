@@ -14,7 +14,7 @@ The axes in the list `s` shall be called the **reduced axes**. The axes outside 
 
 If the array reduction is sensitive to the order of the axes in `s` or to a reversal of an axis, it shall be called **sensitive**. Otherwise it shall be called **insensitive**.
 
-_Note: Actually, this definition of sensitivity might actually be equivalent to non-commutativity._
+_Note: This definition of sensitivity is close to non-commutativity, but not exactly._
 
 ### Computing Reductions
 
